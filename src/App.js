@@ -34,13 +34,23 @@ export default class App extends Component {
     });
   };
   render() {
+    /* Style Btn Using Js */
+    const btnStyle = {
+      padding: '.5rem .75rem',
+      border: 'none',
+      outline: 'none',
+      background: '#A44A0A',
+      color: 'white',
+      cursor: 'pointer',
+      borderRadius: '.25rem',
+    };
     return (
       <div className='App'>
         <h1>WeLcome to React App</h1>
         <button
           onClick={() => this.switchNameHandler('Max Updated')}
           type='button'
-          className='btn btn-primary'
+          style={btnStyle}
         >
           Switch Name
         </button>
