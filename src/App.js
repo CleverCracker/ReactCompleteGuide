@@ -22,6 +22,17 @@ export default class App extends Component {
       ],
     });
   };
+  /* Change User Name */
+  nameChangeHandler = (event) => {
+    console.log('Changing Value');
+    this.setState({
+      persons: [
+        { name: 'MAx', age: 29 },
+        { name: event.target.value, age: 18 },
+        { name: 'Hina', age: 8 },
+      ],
+    });
+  };
   render() {
     return (
       <div className='App'>
@@ -41,6 +52,7 @@ export default class App extends Component {
           name={this.state.persons[1].name}
           age={this.state.persons[1].age}
           clickFn={this.switchNameHandler.bind(this, 'Clever Updated')}
+          changeFn={this.nameChangeHandler}
         />
         <Person
           name={this.state.persons[2].name}
