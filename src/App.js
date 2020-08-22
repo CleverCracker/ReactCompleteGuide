@@ -1,10 +1,9 @@
 import './App.css';
 import Person from './Person/Person';
 
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 
-/* ! React Using Class REDUX i think */
-/* export default class App extends Component {
+export default class App extends Component {
   state = {
     persons: [
       { name: 'Max', age: 22 },
@@ -13,11 +12,11 @@ import React, { Component, useState } from 'react';
     ],
   };
 
-  switchNameHandler = () => {
+  switchNameHandler = (personName) => {
     console.log('CLicked');
     this.setState({
       persons: [
-        { name: 'Malika', age: 29 },
+        { name: personName, age: 29 },
         { name: 'Aina', age: 18 },
         { name: 'Hina', age: 8 },
       ],
@@ -28,7 +27,7 @@ import React, { Component, useState } from 'react';
       <div className='App'>
         <h1>WeLcome to React App</h1>
         <button
-          onClick={this.switchNameHandler}
+          onClick={() => this.switchNameHandler('Max Updated')}
           type='button'
           className='btn btn-primary'
         >
@@ -41,6 +40,7 @@ import React, { Component, useState } from 'react';
         <Person
           name={this.state.persons[1].name}
           age={this.state.persons[1].age}
+          clickFn={this.switchNameHandler.bind(this, 'Clever Updated')}
         />
         <Person
           name={this.state.persons[2].name}
@@ -52,51 +52,3 @@ import React, { Component, useState } from 'react';
     );
   }
 }
- */
-/* React Using Function REACT HOOK */
-const app = (props) => {
-  const [personsState, setPersonsState] = useState({
-    persons: [
-      { name: 'Max', age: 22 },
-      { name: 'Clever', age: 21 },
-      { name: 'Cracker', age: 7 },
-    ],
-  });
-
-  const switchNameHandler = () => {
-    setPersonsState({
-      persons: [
-        { name: 'Malika', age: 29 },
-        { name: 'Aina', age: 18 },
-        { name: 'Hina', age: 8 },
-      ],
-    });
-  };
-  return (
-    <div className='App'>
-      <h1>WeLcome to React App</h1>
-      <button
-        onClick={switchNameHandler}
-        type='button'
-        className='btn btn-primary'
-      >
-        Switch Name
-      </button>
-      <Person
-        name={personsState.persons[0].name}
-        age={personsState.persons[0].age}
-      />
-      <Person
-        name={personsState.persons[1].name}
-        age={personsState.persons[1].age}
-      />
-      <Person
-        name={personsState.persons[2].name}
-        age={personsState.persons[2].age}
-      >
-        Person Chidren
-      </Person>
-    </div>
-  );
-};
-export default app;
