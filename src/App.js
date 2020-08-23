@@ -38,7 +38,7 @@ export default class App extends Component {
       padding: '.5rem .75rem',
       border: 'none',
       outline: 'none',
-      background: '#A44A0A',
+      backgroundColor: 'green',
       color: 'white',
       cursor: 'pointer',
       borderRadius: '.25rem',
@@ -61,11 +61,19 @@ export default class App extends Component {
           })}
         </div>
       );
+      btnStyle.backgroundColor = 'red';
     }
-
+    let classes = [];
+    if (this.state.persons.length <= 2) {
+      classes.push('text-red');
+    }
+    if (this.state.persons.length <= 1) {
+      classes.push('text-weight-bold');
+    }
     return (
       <div className='App'>
         <h1>WeLcome to React App</h1>
+        <p className={classes.join(' ')}>This is Really Working...!</p>
         <button
           onClick={this.togglePersonHandler}
           type='button'
