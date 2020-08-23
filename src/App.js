@@ -6,11 +6,21 @@ import React, { Component } from 'react';
 export default class App extends Component {
   state = {
     persons: [
-      { name: 'Max', age: 22 },
-      { name: 'Clever', age: 21 },
-      { name: 'Cracker', age: 7 },
+      { id: '122', name: 'Max', age: 22 },
+      { id: '123', name: 'Clever', age: 21 },
+      { id: '125', name: 'Cracker', age: 7 },
     ],
     showPerson: false,
+  };
+  nameChangeHandler = (event, id) => {
+    const personIndex = this.state.persons.findIndex((p) => p.id === id);
+    const person = { ...this.state.persons[personIndex] };
+    person.name = event.target.value;
+    const persons = [...this.state.persons];
+    persons[personIndex] = person;
+    this.setState({
+      persons: persons,
+    });
   };
   deletePersonHandler = (personIndex) => {
     // const persons = this.state.persons.slice();
@@ -41,9 +51,11 @@ export default class App extends Component {
           {this.state.persons.map((person, index) => {
             return (
               <Person
+                key={person.id}
                 name={person.name}
                 age={person.age}
                 clickFn={() => this.deletePersonHandler(index)}
+                changedFn={(event) => this.nameChangeHandler(event, person.id)}
               />
             );
           })}
