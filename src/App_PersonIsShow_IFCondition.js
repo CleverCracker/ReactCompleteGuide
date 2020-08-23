@@ -54,9 +54,22 @@ export default class App extends Component {
     if (this.state.showPerson) {
       person = (
         <div>
-          {this.state.persons.map((person) => {
-            return <Person name={person.name} age={person.age} />;
-          })}
+          <Person
+            name={this.state.persons[0].name}
+            age={this.state.persons[0].age}
+          />
+          <Person
+            name={this.state.persons[1].name}
+            age={this.state.persons[1].age}
+            clickFn={this.switchNameHandler.bind(this, 'Clever Updated')}
+            changeFn={this.nameChangeHandler}
+          />
+          <Person
+            name={this.state.persons[2].name}
+            age={this.state.persons[2].age}
+          >
+            Person Chidren
+          </Person>
         </div>
       );
     }
@@ -71,7 +84,28 @@ export default class App extends Component {
         >
           Toggle Persons
         </button>
-        {person}
+        {/* Rendering Person From Render Person Let */ person}
+        {/* Rendering Using Return if */}
+        {/* {this.state.showPerson ? (
+          <div>
+            <Person
+              name={this.state.persons[0].name}
+              age={this.state.persons[0].age}
+            />
+            <Person
+              name={this.state.persons[1].name}
+              age={this.state.persons[1].age}
+              clickFn={this.switchNameHandler.bind(this, 'Clever Updated')}
+              changeFn={this.nameChangeHandler}
+            />
+            <Person
+              name={this.state.persons[2].name}
+              age={this.state.persons[2].age}
+            >
+              Person Chidren
+            </Person>
+          </div>
+        ) : null} */}
       </div>
     );
   }
