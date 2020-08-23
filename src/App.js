@@ -49,6 +49,31 @@ export default class App extends Component {
       cursor: 'pointer',
       borderRadius: '.25rem',
     };
+    /* Rendering Persing IN REnder Method Out Side Return */
+    let person = null;
+    if (this.state.showPerson) {
+      person = (
+        <div>
+          <Person
+            name={this.state.persons[0].name}
+            age={this.state.persons[0].age}
+          />
+          <Person
+            name={this.state.persons[1].name}
+            age={this.state.persons[1].age}
+            clickFn={this.switchNameHandler.bind(this, 'Clever Updated')}
+            changeFn={this.nameChangeHandler}
+          />
+          <Person
+            name={this.state.persons[2].name}
+            age={this.state.persons[2].age}
+          >
+            Person Chidren
+          </Person>
+        </div>
+      );
+    }
+
     return (
       <div className='App'>
         <h1>WeLcome to React App</h1>
@@ -59,7 +84,9 @@ export default class App extends Component {
         >
           Toggle Persons
         </button>
-        {this.state.showPerson ? (
+        {/* Rendering Person From Render Person Let */ person}
+        {/* Rendering Using Return if */}
+        {/* {this.state.showPerson ? (
           <div>
             <Person
               name={this.state.persons[0].name}
@@ -78,7 +105,7 @@ export default class App extends Component {
               Person Chidren
             </Person>
           </div>
-        ) : null}
+        ) : null} */}
       </div>
     );
   }
