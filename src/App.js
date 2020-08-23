@@ -2,8 +2,9 @@ import './App.css';
 import Person from './Person/Person';
 
 import React, { Component } from 'react';
+import Radium from 'radium';
 
-export default class App extends Component {
+class App extends Component {
   state = {
     persons: [
       { id: '122', name: 'Max', age: 22 },
@@ -42,6 +43,10 @@ export default class App extends Component {
       color: 'white',
       cursor: 'pointer',
       borderRadius: '.25rem',
+      ':hover': {
+        backgroundColor: 'lightGreen',
+        color: 'black',
+      },
     };
     /* Rendering Persing IN REnder Method Out Side Return */
     let person = null;
@@ -62,6 +67,10 @@ export default class App extends Component {
         </div>
       );
       btnStyle.backgroundColor = 'red';
+      btnStyle[':hover'] = {
+        backgroundColor: '#A0A00A',
+        color: 'black',
+      };
     }
     let classes = [];
     if (this.state.persons.length <= 2) {
@@ -86,3 +95,4 @@ export default class App extends Component {
     );
   }
 }
+export default Radium(App);
