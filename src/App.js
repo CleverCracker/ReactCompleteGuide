@@ -1,4 +1,4 @@
-import './App.css';
+import classes from './App.module.css';
 import Person from './Person/Person';
 
 import React, { Component } from 'react';
@@ -71,17 +71,17 @@ class App extends Component {
         color: 'black',
       };
     }
-    let classes = [];
+    let assignClasses = [];
     if (this.state.persons.length <= 2) {
-      classes.push('text-red');
+      assignClasses.push(classes.text_red);
     }
     if (this.state.persons.length <= 1) {
-      classes.push('text-weight-bold');
+      assignClasses.push(classes.text_weight_bold);
     }
     return (
-      <div className='App'>
+      <div className={classes.App}>
         <h1>WeLcome to React App</h1>
-        <p className={classes.join(' ')}>This is Really Working...!</p>
+        <p className={assignClasses.join(' ')}>This is Really Working...!</p>
         <button
           onClick={this.togglePersonHandler}
           type='button'
