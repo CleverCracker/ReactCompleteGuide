@@ -5,6 +5,37 @@
 .text_red {
   color: red;
 }
+
 .text_weight_bold {
   font-weight: bold;
+}
+
+
+.App button.red {
+  background-color: red;
+}
+
+.App button.red:hover {
+  background-color: rgb(175, 0, 0);
+  color: white;
+}
+
+.App button.green {
+  background-color: green;
+}
+
+.App button.green:hover {
+  background-color: rgb(1, 102, 1);
+  color: white;
+
+}
+
+.App .btn {
+  padding: .5rem .75rem;
+  border: none;
+  outline: none;
+  background-color: green;
+  color: white;
+  cursor: pointer;
+  border-radius: .25rem;
 }

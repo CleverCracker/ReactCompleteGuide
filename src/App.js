@@ -33,22 +33,10 @@ class App extends Component {
     this.setState({ showPerson: !isShow });
   };
   render() {
-    /* Style Btn Using Js */
-    const btnStyle = {
-      padding: '.5rem .75rem',
-      border: 'none',
-      outline: 'none',
-      backgroundColor: 'green',
-      color: 'white',
-      cursor: 'pointer',
-      borderRadius: '.25rem',
-      ':hover': {
-        backgroundColor: 'lightGreen',
-        color: 'black',
-      },
-    };
     /* Rendering Persing IN REnder Method Out Side Return */
     let person = null;
+    let btnClass = classes.green;
+
     if (this.state.showPerson) {
       person = (
         <div>
@@ -65,11 +53,7 @@ class App extends Component {
           })}
         </div>
       );
-      btnStyle.backgroundColor = 'red';
-      btnStyle[':hover'] = {
-        backgroundColor: '#A0A00A',
-        color: 'black',
-      };
+      btnClass = classes.red;
     }
     let assignClasses = [];
     if (this.state.persons.length <= 2) {
@@ -85,7 +69,7 @@ class App extends Component {
         <button
           onClick={this.togglePersonHandler}
           type='button'
-          style={btnStyle}
+          className={classes.btn + ' ' + btnClass}
         >
           Toggle Persons
         </button>
