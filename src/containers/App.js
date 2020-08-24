@@ -1,5 +1,5 @@
 import classes from './App.module.css';
-import Person from './Person/Person';
+import Person from '../components/Perosns/Person/Person';
 
 import React, { Component } from 'react';
 
