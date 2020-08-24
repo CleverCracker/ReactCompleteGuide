@@ -1,7 +1,7 @@
 import classes from './App.module.css';
-import Person from '../components/Perosns/Person/Person';
-
 import React, { Component } from 'react';
+import Persons from '../components/Perosns/Persons';
+import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
   state = {
@@ -35,44 +35,24 @@ class App extends Component {
   render() {
     /* Rendering Persing IN REnder Method Out Side Return */
     let person = null;
-    let btnClass = classes.green;
 
     if (this.state.showPerson) {
       person = (
-        <div>
-          {this.state.persons.map((person, index) => {
-            return (
-              <Person
-                key={person.id}
-                name={person.name}
-                age={person.age}
-                clickFn={() => this.deletePersonHandler(index)}
-                changedFn={(event) => this.nameChangeHandler(event, person.id)}
-              />
-            );
-          })}
-        </div>
+        <Persons
+          persons={this.state.persons}
+          clickedFn={this.deletePersonHandler}
+          changedFn={this.nameChangeHandler}
+        />
       );
-      btnClass = classes.red;
     }
-    let assignClasses = [];
-    if (this.state.persons.length <= 2) {
-      assignClasses.push(classes.text_red);
-    }
-    if (this.state.persons.length <= 1) {
-      assignClasses.push(classes.text_weight_bold);
-    }
+
     return (
       <div className={classes.App}>
-        <h1>WeLcome to React App</h1>
-        <p className={assignClasses.join(' ')}>This is Really Working...!</p>
-        <button
-          onClick={this.togglePersonHandler}
-          type='button'
-          className={classes.btn + ' ' + btnClass}
-        >
-          Toggle Persons
-        </button>
+        <Cockpit
+          persons={this.state.persons}
+          showPerson={this.state.showPerson}
+          clicked={this.togglePersonHandler}
+        />
         {person}
       </div>
     );
