@@ -2,7 +2,6 @@ import './App.css';
 import Person from './Person/Person';
 
 import React, { Component } from 'react';
-import Radium, { StyleRoot } from 'radium';
 
 class App extends Component {
   state = {
@@ -80,21 +79,19 @@ class App extends Component {
       classes.push('text-weight-bold');
     }
     return (
-      <StyleRoot>
-        <div className='App'>
-          <h1>WeLcome to React App</h1>
-          <p className={classes.join(' ')}>This is Really Working...!</p>
-          <button
-            onClick={this.togglePersonHandler}
-            type='button'
-            style={btnStyle}
-          >
-            Toggle Persons
-          </button>
-          {person}
-        </div>
-      </StyleRoot>
+      <div className='App'>
+        <h1>WeLcome to React App</h1>
+        <p className={classes.join(' ')}>This is Really Working...!</p>
+        <button
+          onClick={this.togglePersonHandler}
+          type='button'
+          style={btnStyle}
+        >
+          Toggle Persons
+        </button>
+        {person}
+      </div>
     );
   }
 }
-export default Radium(App);
+export default App;
